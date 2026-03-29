@@ -58,12 +58,6 @@ Several models were trained and compared:
 
 ---
 
-## 📊 Model Output
-
-* Final trained model: `final_model_artifact.pkl`
-* Additional tuned models stored for comparison
-
----
 ## 📊 Model Evaluation
 
 ### Evaluation Setup
