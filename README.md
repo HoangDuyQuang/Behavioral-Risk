@@ -64,6 +64,70 @@ Several models were trained and compared:
 * Additional tuned models stored for comparison
 
 ---
+## 📊 Model Evaluation
+
+### Evaluation Setup
+
+* Dataset is imbalanced (≈ 14% positive class)
+* Metrics used:
+
+  * ROC-AUC
+  * Precision / Recall
+  * F1-score
+* Threshold tuning applied for different business objectives
+
+---
+
+### 🔍 Baseline vs Advanced Models
+
+| Model               | ROC-AUC |
+| ------------------- | ------- |
+| Logistic Regression | 0.8347  |
+| XGBoost             | 0.8557  |
+| Random Forest       | 0.8650  |
+
+---
+
+### ⚖️ Threshold Tuning (XGBoost Example)
+
+| Mode       | Threshold | Precision | Recall | F1   |
+| ---------- | --------- | --------- | ------ | ---- |
+| Default    | 0.50      | 0.44      | 0.69   | 0.54 |
+| Best F1    | 0.72      | 0.76      | 0.50   | 0.60 |
+| Cost-based | 0.38      | 0.40      | 0.88   | 0.55 |
+
+---
+
+### 📉 Confusion Matrix (Cost-Optimized)
+
+```text
+[[131  34]
+ [  3  23]]
+```
+
+* Only **3 risky customers missed (FN)**
+* High recall achieved at the cost of more false positives
+
+---
+
+### 💼 Business Interpretation
+
+* In risk detection:
+
+  * **False Negatives (FN)** → very costly (missed risky customers)
+  * **False Positives (FP)** → operational overhead
+
+👉 Therefore:
+
+* Model is tuned to **maximize recall**
+* Accept higher FP to reduce risk exposure
+
+---
+
+### 📌 Key Insight
+
+Model performance should not be evaluated solely on AUC.
+In imbalanced risk problems, **threshold tuning and business trade-offs are critical**.
 
 ## 📁 Project Structure
 
